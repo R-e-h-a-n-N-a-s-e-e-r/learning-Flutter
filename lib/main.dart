@@ -14,7 +14,15 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.amber.shade900,
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text("Hot Relaoding"),
+          title: Text(
+            "Custom fonts",
+            style: TextStyle(
+              fontSize: 35,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+              fontFamily: 'RobotoSlab',
+            ),
+          ),
           centerTitle: true,
         ),
         body: SafeArea(
@@ -26,13 +34,14 @@ class MyApp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
 
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Hello'),
-                  Icon(Icons.insert_comment_rounded),
-                  Icon(Icons.ac_unit_sharp),
-                ],
+              Text(
+                'Henry',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.lineThrough,
+                ),
               ),
               Container(
                 height: 100,
