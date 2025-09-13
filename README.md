@@ -1,7 +1,6 @@
-# flutter_projects
+# Flutter Journey
 
-A new Flutter project.
-
+This is my first practice of Flutter. Seeking towards a skilled career
 ## Getting Started
 
 This project is a starting point for a Flutter application.
