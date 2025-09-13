@@ -3,13 +3,6 @@
 This is my first practice of Flutter. Seeking towards a skilled career
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+--> Here is the preview of my first practice of Flutter. It is a simple Login page UI . 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+   <img width="353" height="623" alt="Flutter_Practice_1" src="https://github.com/user-attachments/assets/7147abba-f687-4986-860e-ffd53577c885" />
