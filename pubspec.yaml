@@ -76,6 +76,12 @@ flutter:
     - family: RobotoSlab
       fonts:
         - asset: fonts/RobotoSlab-regular.ttf
+    - family: rubik_medium
+      fonts:
+        - asset: fonts/rubik_medium.ttf
+    - family: rubik_regular
+      fonts:
+        - asset: fonts/rubik_regular.ttf
 
 
 
