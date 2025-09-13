@@ -17,12 +17,44 @@ class MyApp extends StatelessWidget {
           title: Text("Hot Relaoding"),
           centerTitle: true,
         ),
-        body: Center(
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.deepPurpleAccent,
-            child: Center(child: Text("Container")),
+        body: SafeArea(
+          // Safe area keeps things in mobile screen means it do not go outside phone screen.
+          child: Column(
+            spacing: 15,
+            mainAxisAlignment: MainAxisAlignment
+                .start, // this align the children as Y-axis or vertical
+            crossAxisAlignment: CrossAxisAlignment.center,
+
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Hello'),
+                  Icon(Icons.insert_comment_rounded),
+                  Icon(Icons.ac_unit_sharp),
+                ],
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.deepPurple,
+                child: Center(child: Text('Container')),
+              ),
+
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.amber,
+                child: Center(child: Text('Container')),
+              ),
+
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.teal,
+                child: Center(child: Text('Container')),
+              ),
+            ],
           ),
         ),
       ),
