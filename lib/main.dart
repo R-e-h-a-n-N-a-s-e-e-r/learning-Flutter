@@ -17,7 +17,14 @@ class MyApp extends StatelessWidget {
           title: Text("Hot Relaoding"),
           centerTitle: true,
         ),
-        body: const Center(child: Image(image: AssetImage('assets/two.png'))),
+        body: Center(
+          child: Container(
+            width: 200,
+            height: 200,
+            color: Colors.deepPurpleAccent,
+            child: Center(child: Text("Container")),
+          ),
+        ),
       ),
     );
   }
