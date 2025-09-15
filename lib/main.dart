@@ -17,29 +17,24 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.cyan,
         ),
         body: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 100),
-            Divider(
-              color: Colors.blue,
-              // endIndent: 40,
-              // indent: 20,
-              thickness: 2,
-            ),
-            SizedBox(height: 100, child: VerticalDivider(color: Colors.black)),
-            Divider(
-              color: Colors.blue,
-              // endIndent: 40,
-              // indent: 20,
-              thickness: 2,
-            ),
             Center(
-              child: CircleAvatar(
-                // foregroundColor: Colors.red,
-                radius: 50,
-                backgroundColor: Colors.blue,
-                // backgroundImage: NetworkImage('https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg'),
-                child: Icon(Icons.account_circle),
+              child: RichText(
+                text: TextSpan(
+                  style: TextStyle(color: Colors.black, fontSize: 17),
+                  text: 'Dont have an account ? ',
+                  children: [
+                    TextSpan(
+                      text: 'Sign Up',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
