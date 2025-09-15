@@ -13,27 +13,39 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Center(child: Text('Expanded Widget')),
+          title: Center(child: Text('TextInput Field')),
           backgroundColor: Colors.cyan,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  style: TextStyle(color: Colors.black, fontSize: 17),
-                  text: 'Dont have an account ? ',
-                  children: [
-                    TextSpan(
-                      text: 'Sign Up',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                cursorColor: Colors.green,
+                cursorHeight: 20,
+                cursorWidth: 5,
+                cursorRadius: Radius.circular(20),
+                onChanged: (value) {
+                  print(value);
+                },
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  hintText: 'Email',
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  enabled: true, // By default
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red),
+                  ),
+                  prefixIcon: Icon(Icons.email_outlined),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.green),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue),
+                  ),
                 ),
               ),
             ),
