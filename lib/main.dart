@@ -1,140 +1,69 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-int x = 0;
-
-Random random = Random();
-int y = 17;
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Color(0xffdbf3ff),
+        appBar: AppBar(
+          title: Center(child: Text('Container Widget')),
+          backgroundColor: Colors.cyan,
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: y.toString(),
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                      ),
+              child: Container(
+                // margin: EdgeInsets.only(right: 40,left: 60),
+                // padding: EdgeInsets.symmetric(vertical: 50,horizontal: 60),
+                transform: Matrix4.rotationZ(0.3),
+                width: 200,
+                height: 150,
+                decoration: BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 25,
+                      // blurStyle: BlurStyle.outer,
+                      // spreadRadius: 10,
                     ),
                   ],
-                  text: 'lucky number is ',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.grey.shade700,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      'https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg',
+                    ),
+                  ),
+                  border: BoxBorder.all(color: Colors.black, width: 2),
+                  // borderRadius: BorderRadius.only(
+                  //   topRight: Radius.circular(50),
+                  //   bottomLeft: Radius.circular(50),
+                  //   bottomRight: Radius.circular(5),
+                  //   topLeft: Radius.circular(5),
+                  // ),
+                ),
+                child: Center(
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Container(
-              height: 200,
-              width: 200,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: x == y
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.wb_incandescent, color: Colors.green),
-                        SizedBox(height: 20),
-                        RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            style: TextStyle(
-                              color: Colors.grey.shade700,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                            ),
-                            children: [
-                              TextSpan(text: 'You won with '),
-                              TextSpan(
-                                text: '$x',
-                                style: TextStyle(
-                                  color: Colors.green,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.error, color: Colors.red, size: 35),
-                        SizedBox(height: 20),
-                        RichText(
-                          text: TextSpan(
-                            text: 'Better next time you got \n',
-                            style: TextStyle(
-                              color: Colors.grey.shade500,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: "$x",
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-            ),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.account_balance_wallet),
-          onPressed: () {
-            x = random.nextInt(20);
-            setState(() {});
-          },
-        ),
-        appBar: AppBar(
-          title: Center(
-            child: Text(
-              "Simple Lottery App",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                letterSpacing: 1.5,
-              ),
-            ),
-          ),
-          backgroundColor: Colors.cyan,
         ),
       ),
     );
