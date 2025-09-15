@@ -13,40 +13,27 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Center(child: Text('TextInput Field')),
-          backgroundColor: Colors.cyan,
+          title: Center(child: Text('ListView Builder')),
+          backgroundColor: Colors.green.shade500,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                cursorColor: Colors.green,
-                cursorHeight: 20,
-                cursorWidth: 5,
-                cursorRadius: Radius.circular(20),
-                onChanged: (value) {
-                  print(value);
+            Expanded(
+              child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text('Henry'),
+                    subtitle: Text('This is a ListView Builder'),
+                    trailing: Text('6:10 pm'),
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        'https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg',
+                      ),
+                    ),
+                  );
                 },
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  hintText: 'Email',
-                  filled: true,
-                  fillColor: Colors.grey.shade200,
-                  enabled: true, // By default
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                  prefixIcon: Icon(Icons.email_outlined),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue),
-                  ),
-                ),
               ),
             ),
           ],
