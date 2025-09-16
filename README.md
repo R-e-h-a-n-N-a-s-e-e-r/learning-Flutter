@@ -19,3 +19,13 @@ ________________________________________________________________________________
 
 
 <img width="349" height="615" alt="Flutter_Practice_2" src="https://github.com/user-attachments/assets/dd84681b-69ff-4fee-985d-6782d0c73428" />
+
+
+
+___________________________________________________________________________________________________________________________________________________________________________________________
+
+
+---> Created using ListView Builder. 
+
+
+<img width="347" height="620" alt="Flutter_Practice_4" src="https://github.com/user-attachments/assets/046feb0d-3076-40e6-8e03-6a394a6240a3" />
