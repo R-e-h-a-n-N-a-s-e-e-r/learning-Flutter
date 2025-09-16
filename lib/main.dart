@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projects/home.dart';
+import 'package:flutter_projects/screen_1.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,34 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text('ListView Builder')),
-          backgroundColor: Colors.green.shade500,
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Henry'),
-                    subtitle: Text('This is a ListView Builder'),
-                    trailing: Text('6:10 pm'),
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        'https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg',
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
+      // home:Home()
+      initialRoute: Home.id,
+      routes: {
+        Home.id: (context) => Home(),
+        Screen1.id: (context) => Screen1(),
+      },
     );
   }
 }
