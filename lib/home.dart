@@ -1,4 +1,9 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pinput/pinput.dart';
+import 'package:readmore/readmore.dart';
+import 'package:badges/badges.dart' as badges;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,112 +15,84 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("WhatsApp UI"),
-          backgroundColor: Colors.teal,
-          foregroundColor: Colors.white,
-          bottom: TabBar(
-            indicatorColor: Colors.white,
-            labelStyle: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
-            ),
-            tabs: [
-              Tab(child: Icon(Icons.camera_alt)),
-              Tab(child: Text('Chats')),
-              Tab(child: Text('Status')),
-              Tab(child: Text('Calls')),
+    return Scaffold(
+      backgroundColor: Colors.teal,
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Text("Pub dev"),
+        centerTitle: true,
+        foregroundColor: Colors.white,
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsetsGeometry.all(30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Pinput(
+                onChanged: (value){},
+                length: 5,
+                defaultPinTheme:PinTheme(
+                  width: 45,
+                  height: 56,
+                  textStyle: TextStyle(fontSize: 20, color: Color.fromRGBO(30, 60, 87, 1), fontWeight: FontWeight.w600),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                )
+              ),
             ],
           ),
-          actions: [
-            Icon(Icons.search),
-            PopupMenuButton(
-              itemBuilder: (context) => [
-                PopupMenuItem(value: '1', child: Text('New Group')),
-                PopupMenuItem(value: '2', child: Text('Setting')),
-                PopupMenuItem(value: '3', child: Text('Profile')),
-              ],
-            ),
-          ],
-        ),
-        body: TabBarView(
-          children: [
-            Text("1"),
-            ListView.builder(
-              itemCount: 40,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: index.isEven
-                        ? AssetImage('assets/logo.png')
-                        : NetworkImage(
-                            'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg',
-                          ),
-                  ),
-                  trailing: index.isEven ? Text("3:27 pm") : Text('1:30 am'),
-                  title: index.isEven ? Text("Henry") : Text('Peter'),
-                  subtitle: index.isEven
-                      ? Text("Hey there! i am using whatsApp")
-                      : Text('Hi Sorry working right now'),
-                );
-              },
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Text(
-                    "Status Update",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-                  ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 15,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.green, width: 3),
-                          ),
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage('assets/logo.png'),
-                          ),
-                        ),
-                        title: Text("Henry"),
-                        subtitle: Text('35 minutes Ago'),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-            ListView.builder(
-              itemCount: 15,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: AssetImage('assets/logo.png'),
-                  ),
-                  trailing: index / 2 == 0
-                      ? Icon(Icons.call)
-                      : Icon(Icons.video_call),
-                  title: Text("Henry"),
-                  subtitle: index / 2 == 0
-                      ? Text('You missed a call')
-                      : Text('At 3:17 pm'),
-                );
-              },
-            ),
-          ],
         ),
       ),
     );
   }
 }
+
+// children: [
+// Icon(FontAwesomeIcons.houseMedicalCircleCheck),
+// ReadMoreText(
+// 'The Annotation feature enhances the interactivity and functionality of the text content. You can define custom styles and interactions for patterns like hashtags, URLs, and mentions.',
+// trimMode: TrimMode.Line,
+// trimLines: 2,
+// colorClickableText: Colors.pink,
+// trimCollapsedText: 'Show more',
+// trimExpandedText: 'Show less',
+// moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+// ),
+// badges.Badge(
+// badgeContent: Text('6'),
+// badgeAnimation: badges.BadgeAnimation.slide(),
+// child: Icon(Icons.account_circle),
+// ),
+// badges.Badge(
+// badgeContent: Text('2'),
+// badgeAnimation: badges.BadgeAnimation.rotation(),
+// child: Icon(FontAwesomeIcons.anchorCircleXmark),
+// ),
+// badges.Badge(
+// badgeContent: Text('1'),
+// badgeAnimation: badges.BadgeAnimation.fade(),
+// child: Icon(FontAwesomeIcons.alarmClock),
+// ),
+// Row(
+// // mainAxisSize: MainAxisSize.min,
+// children: <Widget>[
+// const SizedBox(width: 20.0, height: 100.0),
+// const Text('Be', style: TextStyle(fontSize: 43.0)),
+// const SizedBox(width: 20.0, height: 100.0),
+// DefaultTextStyle(
+// style: const TextStyle(fontSize: 40.0, color: Colors.black),
+// child: AnimatedTextKit(
+// animatedTexts: [
+// RotateAnimatedText('AWESOME'),
+// RotateAnimatedText('OPTIMISTIC'),
+// RotateAnimatedText('DIFFERENT'),
+// ],
+// ),
+// ),
+// ],
+// ),
+// ],
