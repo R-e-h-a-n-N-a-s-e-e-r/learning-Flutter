@@ -1,30 +1,39 @@
 import 'package:flutter/material.dart';
 
-class Screen1 extends StatefulWidget {
-  static const String id = 'Screen1';
+class MyButton extends StatelessWidget {
+  final String title;
+  final Color color;
+  final VoidCallback onPress;
+  final Color textColor;
 
-  const Screen1({super.key});
+  const MyButton({
+    super.key,
+    required this.title,
+    this.color = const Color(0xff1A1D2B),
+    required this.onPress,
+    this.textColor = const Color(0xff6A8AFF),
+  });
 
-  @override
-  State<Screen1> createState() => _Screen1State();
-}
-
-class _Screen1State extends State<Screen1> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Screen_1'), backgroundColor: Colors.blue),
-      body: ListView.builder(
-        itemCount: 15,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text("Rehan"),
-            trailing: Text("3:15 pm"),
-            subtitle: Text("Hey! whats up"),
-
-          );
-        },
+    return Expanded(
+      child: InkWell(
+        onTap: onPress,
+        child: Container(
+          width: 70,
+          height: 70,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+          child: Center(
+            child: Text(
+              title,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
