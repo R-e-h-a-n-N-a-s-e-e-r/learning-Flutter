@@ -41,3 +41,11 @@ ________________________________________________________________________________
 
 
 <img width="349" height="618" alt="Flutter_Practice_5" src="https://github.com/user-attachments/assets/08e80be6-a316-478b-8d74-5f09f7631cc0" />
+
+
+
+________________________________________________________________________________________________________________________________________________________________________
+
+---> Preview of my simple Calculator app
+
+<img width="351" height="630" alt="Flutter_Practice_6" src="https://github.com/user-attachments/assets/77e7ab1e-0e4d-4382-bf67-4bed143608af" />
