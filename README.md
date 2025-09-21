@@ -49,3 +49,16 @@ ________________________________________________________________________________
 ---> Preview of my simple Calculator app
 
 <img width="351" height="630" alt="Flutter_Practice_6" src="https://github.com/user-attachments/assets/77e7ab1e-0e4d-4382-bf67-4bed143608af" />
+
+
+
+________________________________________________________________________________________________________________________________________________________________________
+
+---> Preview of shared Preferences by which you can store small userdata like username or islogin 
+
+<img width="350" height="623" alt="Flutter_practice_1 1" src="https://github.com/user-attachments/assets/12c321a2-73d6-430b-8ab4-3f2c60d30b62" />
+<img width="355" height="621" alt="Flutter_practice_1 2" src="https://github.com/user-attachments/assets/72925685-f95c-4929-abc4-1cb01a7eb1ee" />
+
+
+
+
