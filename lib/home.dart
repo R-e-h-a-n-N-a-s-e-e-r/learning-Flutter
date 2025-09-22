@@ -1,6 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/screen_1.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_projects/Models/postModel.dart';
+import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,72 +12,106 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String email = '', age = '', type = '';
+  List<PostModel> postList = [];
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    loadData();
-  }
+  Future<List<PostModel>> getPostApi() async {
+    final response = await http.get(
+      Uri.parse('https://jsonplaceholder.typicode.com/posts'),
+      headers: {'Accept': 'application/json'},
+    );
 
-  void loadData() async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    email = sp.getString('email') ?? '';
-    age = sp.getString('age') ?? '';
-    type = sp.getString('type') ?? '';
-    setState(() {});
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+
+      postList.clear(); // avoid duplicates
+      for (Map i in data) {
+        postList.add(PostModel.fromJson(i));
+      }
+
+      return postList;
+    } else {
+      return [];
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        title: Text('GET API'),
         foregroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         centerTitle: true,
-
-        title: Text('Home'),
-        automaticallyImplyLeading: false,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            "SharedPreferences",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-          ),
-          Text(
-            'Email : $email',
-            style: TextStyle(color: Colors.black, fontSize: 20),
-          ),
-          Text(
-            'Age : $age',
-            style: TextStyle(color: Colors.black, fontSize: 20),
-          ),
-          Text(
-            'Type : $type',
-            style: TextStyle(color: Colors.black, fontSize: 20),
-          ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: FutureBuilder(
+                future: getPostApi(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: Text(
+                        'Loading...',
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    );
+                  } else {
+                    return ListView.builder(
+                      itemCount: postList.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
 
-          InkWell(
-            onTap: () async {
-              SharedPreferences sp = await SharedPreferences.getInstance();
-              sp.clear();
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
-              );
-            },
-            child: Container(
-              width: double.infinity,
-              height: 35,
-              color: Colors.green,
-              child: Center(child: Text('Logout')),
+                            children: [
+                              Text(
+                                'Title :-',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              Text(
+                                postList[index].title.toString(),
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.grey.shade800,
+                                ),
+                              ),
+                              Text(
+                                'Description :-',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              Text(
+                                postList[index].body.toString(),
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.grey.shade800,
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
