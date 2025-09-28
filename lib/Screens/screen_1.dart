@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/Screens/screen_1.dart';
+import 'package:flutter_projects/Screens/screen_2.dart';
 import 'package:flutter_projects/Utitils/route_names.dart';
 
-class HomeScreen extends StatefulWidget {
-  // static const String id='home_screen';
-  const HomeScreen({super.key});
+class Screen1 extends StatefulWidget {
+  // static const String id = 'Screen_1';
+  dynamic data;
+
+   Screen1({super.key,required this.data});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Screen1> createState() => _Screen1State();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _Screen1State extends State<Screen1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home Screen'), backgroundColor: Colors.blue),
+      appBar: AppBar(title: Text('Screen 1' + widget.data['name']), backgroundColor: Colors.blue),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,11 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           InkWell(
             onTap: () {
               // Navigator.pushNamed(context, Screen1.id);
-              Navigator.pushNamed(
-                context,
-                RouteNames.screen1,
-                arguments: {'name': 'Henry', 'age': 25},
-              );
+              Navigator.pushNamed(context, RouteNames.screen2);
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -37,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.green,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Center(child: Text('Go to Screen 1')),
+                child: Center(child: Text('Go to Screen 2')),
               ),
             ),
           ),
